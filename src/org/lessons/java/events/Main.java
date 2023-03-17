@@ -34,13 +34,14 @@ public class Main {
             }
             System.out.println("Hai prenotato " + event.getBookedSitNumber() + " biglietti su " + event.getTotalSitNumber());
 
+
             System.out.print("Quanti biglietti vuoi disdire? ");
             int canceledTicket = Integer.parseInt(scan.nextLine());
 
-            for (int i = 0; i < canceledTicket; i++) {
-                event.disdici();
-            }
-
+                    for (int i = 0; i < canceledTicket; i++) {
+                        event.disdici();
+                    }
+                    System.out.println("Hai cancellato la prenotazione di " + canceledTicket + " biglietti");
 
         } catch (IllegalArgumentException | DateTimeException e) {
             System.out.println(e.getMessage());

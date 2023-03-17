@@ -69,7 +69,7 @@ public class Evento {
             throw new DateTimeException("L'evento che stai cercando di prenotare è già passato");
         }
         if (bookedSitNumber >= totalSitNumber){
-            throw new IllegalArgumentException("L'evento è Sold Out. :(" );
+            throw new IllegalArgumentException("Impossibile acquistare, l'importo dei ticket supera la capienza massima. :(" );
         }
         bookedSitNumber++;
     }
