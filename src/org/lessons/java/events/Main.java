@@ -43,6 +43,8 @@ public class Main {
                     }
                     System.out.println("Hai cancellato la prenotazione di " + canceledTicket + " biglietti");
 
+            System.out.println("Posti prenotati: " + event.getBookedSitNumber() + " su " + event.getTotalSitNumber() + " posti");
+
         } catch (IllegalArgumentException | DateTimeException e) {
             System.out.println(e.getMessage());
         }
