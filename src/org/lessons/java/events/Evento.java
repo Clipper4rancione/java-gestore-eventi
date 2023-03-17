@@ -15,7 +15,7 @@ public class Evento {
 
     // CONSTRUCTOR
 
-    public Evento(String eventTitle, LocalDate eventDate, int totalSitNumber, int bookedSitNumber) {
+    public Evento(String eventTitle, LocalDate eventDate, int totalSitNumber) {
 
         this.eventTitle = eventTitle;
 
@@ -29,7 +29,6 @@ public class Evento {
 
         this.eventDate = eventDate;
         this.totalSitNumber = totalSitNumber;
-        this.bookedSitNumber = bookedSitNumber;
     }
 
     // GETTERS AND SETTERS
@@ -81,5 +80,15 @@ public class Evento {
             throw new IllegalArgumentException("Al momento non ci sono prenotazioni");
         }
         bookedSitNumber--;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "eventTitle='" + eventTitle + '\'' +
+                ", eventDate=" + getFormattedDate() +
+                ", totalSitNumber=" + totalSitNumber +
+                ", bookedSitNumber=" + bookedSitNumber +
+                '}';
     }
 }
