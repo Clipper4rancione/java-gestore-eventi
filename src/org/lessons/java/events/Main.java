@@ -1,7 +1,9 @@
 package org.lessons.java.events;
 
+import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +19,11 @@ public class Main {
         System.out.print("Giorno dell'evento: ");
         int day = Integer.parseInt(scan.nextLine());
         LocalDate eventDate = LocalDate.of(year, month, day);
+        System.out.print("A che ora si terrà l'evento? (indica solo l'ora, no minuti, no secondi) ");
+        int hour = Integer.parseInt(scan.nextLine());
+        LocalTime eventHour = LocalTime.of(hour, 0, 0);
+        System.out.print("Quanto costerà il biglietto: ");
+        int price = Integer.parseInt(scan.nextLine());
         System.out.print("Numero di posti disponibili: ");
         int totalSitNumber = Integer.parseInt(scan.nextLine());
 
@@ -49,7 +56,13 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        Concerto conc = new Concerto(eventTitle, eventDate, totalSitNumber, eventHour, BigDecimal.valueOf(price));
 
+        System.out.println("Complimenti! hai completato l'acquisto del biglietto, eccoti il resoconto: ");
+        System.out.println();
+        System.out.println(conc);
+        System.out.println("***************");
+        System.out.println(eventTitle + " alle " + eventHour + " il " + eventDate + " Prezzo del biglietto cad. " + price + "€");
 
 
 

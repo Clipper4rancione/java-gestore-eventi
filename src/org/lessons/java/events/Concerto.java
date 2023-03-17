@@ -42,7 +42,7 @@ public class Concerto extends Evento{
     public String toString() {
         return "Concerto{" +
                 "ora=" + ora +
-                ", prezzo=" + prezzo +
+                ", prezzo=" + getPrezzoFormatted() +
                 '}';
     }
 }
