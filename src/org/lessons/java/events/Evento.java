@@ -29,6 +29,7 @@ public class Evento {
 
         this.eventDate = eventDate;
         this.totalSitNumber = totalSitNumber;
+
     }
 
     // GETTERS AND SETTERS

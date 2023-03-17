@@ -20,11 +20,42 @@ public class Main {
         System.out.print("Numero di posti disponibili: ");
         int totalSitNumber = Integer.parseInt(scan.nextLine());
 
+
+
         try {
             Evento event = new Evento(eventTitle, eventDate, totalSitNumber);
             System.out.println("Il tuo evento: " + event);
+
+            System.out.print("Quanti biglietti vuoi acquistare? ");
+            int bookingTicket = Integer.parseInt(scan.nextLine());
+
+            for (int i = 0; i < bookingTicket; i++) {
+                event.prenota();
+            }
+            System.out.println("Hai prenotato " + event.getBookedSitNumber() + " biglietti su " + event.getTotalSitNumber());
+
+            System.out.print("Quanti biglietti vuoi disdire? ");
+            int canceledTicket = Integer.parseInt(scan.nextLine());
+
+            for (int i = 0; i < canceledTicket; i++) {
+                event.disdici();
+            }
+
+
         } catch (IllegalArgumentException | DateTimeException e) {
             System.out.println(e.getMessage());
         }
+
+
+
+
+
+
+
+        scan.close();
+
+
+
+
     }
 }
