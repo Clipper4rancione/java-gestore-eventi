@@ -1,6 +1,8 @@
 package org.lessons.java.events;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Evento {
 
@@ -13,10 +15,19 @@ public class Evento {
 
     // CONSTRUCTOR
 
-    public Evento(String eventTitle, String eventDate, int totalSitNumber, int bookedSitNumber) {
+    public Evento(String eventTitle, LocalDate eventDate, int totalSitNumber, int bookedSitNumber) {
 
         this.eventTitle = eventTitle;
-        this.eventDate = LocalDate.parse(eventDate);
+
+        // CONTROLLO SULLA DATA E SUI POSTI A SEDERE
+        if (eventDate.isBefore(LocalDate.now())) {
+            throw new DateTimeException("Impossibile creare l'evento in una data passata.");
+        }
+        if (totalSitNumber < 0){
+            throw new IllegalArgumentException("Il numero di posti totali non può essere negativo. Inserisci un numero superiore a 0");
+        }
+
+        this.eventDate = eventDate;
         this.totalSitNumber = totalSitNumber;
         this.bookedSitNumber = bookedSitNumber;
     }
@@ -45,5 +56,30 @@ public class Evento {
 
     public int getBookedSitNumber() {
         return bookedSitNumber;
+    }
+
+    public String getFormattedDate(){
+        return eventDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+
+    // METHODS
+
+    public void prenota(){
+        if (eventDate.isBefore(eventDate)){
+            throw new DateTimeException("L'evento che stai cercando di prenotare è già passato");
+        }
+        if (bookedSitNumber >= totalSitNumber){
+            throw new IllegalArgumentException("L'evento è Sold Out. :(" );
+        }
+        bookedSitNumber++;
+    }
+    public void disdici(){
+        if (eventDate.isBefore(eventDate)){
+            throw new DateTimeException("L'evento che stai cercando di disdire è già passato");
+        }
+        if ( bookedSitNumber == 0){
+            throw new IllegalArgumentException("Al momento non ci sono prenotazioni");
+        }
+        bookedSitNumber--;
     }
 }
